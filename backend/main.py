@@ -38,11 +38,16 @@ jinja_env = Environment(
 
 # ---------- Pydantic models ----------
 
+class ExtraField(BaseModel):
+    label: str = ""
+    value: str = ""
+
 class Header(BaseModel):
     name: str = ""
     email: str = ""
     linkedin: str = ""
     location: str = ""
+    extra: list[ExtraField] = []
 
 
 class EducationEntry(BaseModel):

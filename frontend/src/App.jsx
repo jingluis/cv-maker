@@ -10,7 +10,7 @@ import { generateCV } from "./lib/api.js";
 import { t } from "./lib/i18n.js";
 
 const EMPTY_CV = {
-  header: { name: "", email: "", linkedin: "", location: "" },
+  header: { name: "", email: "", linkedin: "", location: "", extra: [] },
   summary: [],
   education: [],
   experience: [],

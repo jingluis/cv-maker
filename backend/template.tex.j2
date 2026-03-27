@@ -77,10 +77,19 @@
 %---------- HEADER ----------
 \begin{center}
     \textbf{\Huge \scshape <{ tex(cv.header.name) }>} \\[5pt]
-    <{ tex(cv.header.email) }>
+    <{ tex(cv.header.email) }>%
     << if cv.header.linkedin >> $|$
-    \href{<{ cv.header.linkedin }>}{\underline{<{ tex(cv.header.linkedin) }>}}
-    << endif >> \\[5pt]
+    \href{<{ cv.header.linkedin }>}{\underline{<{ tex(cv.header.linkedin) }>}}%
+    << endif >>
+    << for field in cv.header.extra >>
+    << if field.value >> $|$
+    << if field.value.startswith('http') >>
+    \href{<{ field.value }>}{\underline{<{ tex(field.value) }>}}%
+    << else >>
+    <{ tex(field.value) }>%
+    << endif >>
+    << endif >>
+    << endfor >> \\[5pt]
     <{ tex(cv.header.location) }>
 \end{center}
 

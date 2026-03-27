@@ -9,6 +9,11 @@ export const t = {
       email: "Email", emailPh: "john.smith@email.com",
       linkedin: "LinkedIn URL", linkedinPh: "https://linkedin.com/in/johnsmith",
       location: "Location", locationPh: "New York, USA",
+      extraFields: "Additional Header Fields",
+      extraLabel: "Label", extraLabelPh: "GitHub",
+      extraValue: "Value", extraValuePh: "https://github.com/username",
+      addField: "Add field",
+      cvLanguageNote: "The CV will be generated in English regardless of the language selected here.",
     },
     summary: {
       title: "Professional Summary",
@@ -63,6 +68,11 @@ export const t = {
       email: "邮箱", emailPh: "zhangsan@email.com",
       linkedin: "LinkedIn 链接", linkedinPh: "https://linkedin.com/in/zhangsan",
       location: "所在地", locationPh: "北京, 中国",
+      extraFields: "额外信息栏",
+      extraLabel: "标签", extraLabelPh: "GitHub",
+      extraValue: "内容", extraValuePh: "https://github.com/username",
+      addField: "添加字段",
+      cvLanguageNote: "无论此处选择何种语言，简历将以英文生成。",
     },
     summary: {
       title: "个人简介",
