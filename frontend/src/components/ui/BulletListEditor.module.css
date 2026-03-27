@@ -7,47 +7,54 @@
 }
 
 .bullet {
-  padding-top: 0.5rem;
-  color: #5c35d4;
-  font-size: 1.1rem;
+  padding-top: 0.6rem;
+  color: var(--accent);
+  font-size: 1rem;
   flex-shrink: 0;
 }
 
 .input {
   flex: 1;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 0.5rem 0.75rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.8rem;
+  color: var(--text);
   resize: vertical;
-  line-height: 1.4;
+  line-height: 1.5;
   transition: border-color 0.15s;
 }
 
-.input:focus { outline: none; border-color: #5c35d4; }
+.input::placeholder { color: var(--text-muted); }
+.input:focus { outline: none; border-color: var(--accent); }
 
 .removeBtn {
   background: none;
   border: none;
-  font-size: 1.3rem;
-  color: #bbb;
+  font-size: 1.2rem;
+  color: var(--text-muted);
   cursor: pointer;
-  padding: 0.3rem 0.4rem;
+  padding: 0.4rem;
   line-height: 1;
   border-radius: 4px;
+  transition: color 0.15s;
 }
 
-.removeBtn:hover { color: #e53935; background: #fff0f0; }
+.removeBtn:hover { color: var(--error); }
 
 .addBtn {
   align-self: flex-start;
   background: none;
-  border: 1px dashed #5c35d4;
-  color: #5c35d4;
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
   padding: 0.4rem 0.9rem;
   border-radius: 6px;
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   cursor: pointer;
-  margin-top: 0.25rem;
+  transition: border-color 0.15s, color 0.15s;
 }
 
-.addBtn:hover { background: #f0ebff; }
+.addBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

@@ -1,24 +1,29 @@
-.field { display: flex; flex-direction: column; gap: 0.3rem; }
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
 
 .label {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: #444;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .hint {
-  font-size: 0.78rem;
-  color: #999;
+  font-size: 0.75rem;
+  color: var(--text-muted);
   margin-top: -0.2rem;
 }
 
 .input {
-  border: 1px solid #ddd;
-  border-radius: 7px;
-  padding: 0.55rem 0.8rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.85rem;
   width: 100%;
+  color: var(--text);
   transition: border-color 0.15s;
   resize: vertical;
 }
 
-.input:focus { outline: none; border-color: #5c35d4; }
+.input::placeholder { color: var(--text-muted); }
+.input:focus { outline: none; border-color: var(--accent); }

@@ -1,76 +1,81 @@
+import Footer from "./Footer.jsx";
 import styles from "./WizardShell.module.css";
 
 export default function WizardShell({
-  steps,
-  currentStep,
-  onNext,
-  onBack,
-  onGenerate,
-  loading,
-  error,
-  children,
+  tr, currentStep, onNext, onBack, onGenerate,
+  loading, error, lang, onLangToggle, children,
 }) {
-  const isLast = currentStep === steps.length - 1;
+  const isLast = currentStep === tr.steps.length - 1;
   const isFirst = currentStep === 0;
 
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>CV Maker</h1>
-          <div className={styles.progressBar}>
-            {steps.map((s, i) => (
-              <div
-                key={s.key}
-                className={[
-                  styles.progressStep,
-                  i < currentStep ? styles.done : "",
-                  i === currentStep ? styles.active : "",
-                ].join(" ")}
-              >
-                <div className={styles.dot}>{i < currentStep ? "✓" : i + 1}</div>
-                <span className={styles.stepLabel}>{s.label}</span>
-              </div>
-            ))}
-          </div>
-        </header>
 
+        {/* Top bar */}
+        <div className={styles.topBar}>
+          <span className={styles.logo}>
+            <span className={styles.logoDot} />
+            {tr.appTitle}
+          </span>
+          <button className={styles.langBtn} onClick={onLangToggle}>
+            {tr.lang}
+          </button>
+        </div>
+
+        {/* Progress */}
+        <div className={styles.progressRow}>
+          {tr.steps.map((label, i) => (
+            <div key={i} className={styles.progressItem}>
+              <div className={[
+                styles.progressDot,
+                i < currentStep ? styles.done : "",
+                i === currentStep ? styles.active : "",
+              ].join(" ")}>
+                {i < currentStep ? "✓" : i + 1}
+              </div>
+              <span className={[
+                styles.progressLabel,
+                i === currentStep ? styles.activeLabel : "",
+              ].join(" ")}>{label}</span>
+              {i < tr.steps.length - 1 && (
+                <div className={[styles.connector, i < currentStep ? styles.connectorDone : ""].join(" ")} />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Content */}
         <main className={styles.body}>
-          <h2 className={styles.sectionTitle}>{steps[currentStep].label}</h2>
           {children}
         </main>
 
         {error && <p className={styles.error}>{error}</p>}
 
-        <footer className={styles.footer}>
-          <button
-            className={styles.btnSecondary}
-            onClick={onBack}
-            disabled={isFirst}
-          >
-            Back
+        {/* Nav */}
+        <div className={styles.footer}>
+          <button className={styles.btnBack} onClick={onBack} disabled={isFirst}>
+            {tr.nav.back}
           </button>
-          <div className={styles.rightButtons}>
+          <div className={styles.rightBtns}>
             {!isLast && (
               <button className={styles.btnSkip} onClick={onNext}>
-                Skip
+                {tr.nav.skip}
               </button>
             )}
             {!isLast ? (
-              <button className={styles.btnPrimary} onClick={onNext}>
-                Next
+              <button className={styles.btnNext} onClick={onNext}>
+                {tr.nav.next}
               </button>
             ) : (
-              <button
-                className={styles.btnGenerate}
-                onClick={onGenerate}
-                disabled={loading}
-              >
-                {loading ? "Generating..." : "Generate CV"}
+              <button className={styles.btnGenerate} onClick={onGenerate} disabled={loading}>
+                {loading ? tr.nav.generating : tr.nav.generate}
               </button>
             )}
           </div>
-        </footer>
+        </div>
+
+        <Footer />
       </div>
     </div>
   );

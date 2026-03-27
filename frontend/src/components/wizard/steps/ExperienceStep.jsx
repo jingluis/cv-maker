@@ -3,59 +3,26 @@ import Field from "../../ui/Field.jsx";
 import BulletListEditor from "../../ui/BulletListEditor.jsx";
 import styles from "./Step.module.css";
 
-const EMPTY = {
-  title: "",
-  company: "",
-  location: "",
-  dates: "",
-  bullets: [],
-};
+const EMPTY = { title: "", company: "", location: "", dates: "", bullets: [] };
 
-export default function ExperienceStep({ data, onChange }) {
+export default function ExperienceStep({ data, onChange, tr }) {
+  const e = tr.experience;
   return (
     <RepeatableSection
       items={data}
       onChange={onChange}
       emptyItem={EMPTY}
-      addLabel="Add position"
+      addLabel={e.add}
       renderItem={(item, update) => (
         <div className={styles.stack}>
           <div className={styles.grid2}>
-            <Field
-              label="Job Title"
-              value={item.title}
-              placeholder="Lead Data Analyst"
-              onChange={(v) => update({ ...item, title: v })}
-            />
-            <Field
-              label="Company"
-              value={item.company}
-              placeholder="Boston Consulting Group"
-              onChange={(v) => update({ ...item, company: v })}
-            />
-            <Field
-              label="Location"
-              value={item.location}
-              placeholder="Madrid, Spain"
-              onChange={(v) => update({ ...item, location: v })}
-            />
-            <Field
-              label="Dates"
-              value={item.dates}
-              placeholder="2025 -- Present"
-              onChange={(v) => update({ ...item, dates: v })}
-            />
+            <Field label={e.title_} value={item.title} placeholder={e.titlePh} onChange={(v) => update({ ...item, title: v })} />
+            <Field label={e.company} value={item.company} placeholder={e.companyPh} onChange={(v) => update({ ...item, company: v })} />
+            <Field label={e.location} value={item.location} placeholder={e.locationPh} onChange={(v) => update({ ...item, location: v })} />
+            <Field label={e.dates} value={item.dates} placeholder={e.datesPh} onChange={(v) => update({ ...item, dates: v })} />
           </div>
-          <div>
-            <p style={{ fontSize: "0.85rem", fontWeight: 600, color: "#444", marginBottom: "0.5rem" }}>
-              Bullet Points
-            </p>
-            <BulletListEditor
-              items={item.bullets}
-              onChange={(v) => update({ ...item, bullets: v })}
-              placeholder="Describe your achievement or responsibility..."
-            />
-          </div>
+          <p className={styles.sectionLabel}>{e.bullets}</p>
+          <BulletListEditor items={item.bullets} onChange={(v) => update({ ...item, bullets: v })} placeholder={e.bulletPh} />
         </div>
       )}
     />

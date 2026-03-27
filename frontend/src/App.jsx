@@ -7,6 +7,7 @@ import ExperienceStep from "./components/wizard/steps/ExperienceStep.jsx";
 import ProjectsStep from "./components/wizard/steps/ProjectsStep.jsx";
 import SkillsStep from "./components/wizard/steps/SkillsStep.jsx";
 import { generateCV } from "./lib/api.js";
+import { t } from "./lib/i18n.js";
 
 const EMPTY_CV = {
   header: { name: "", email: "", linkedin: "", location: "" },
@@ -17,31 +18,21 @@ const EMPTY_CV = {
   skills: { "IT Skills": "", "Certifications": "", "Language Skills": "", "Activities": "" },
 };
 
-const STEPS = [
-  { label: "Header",      key: "header" },
-  { label: "Summary",     key: "summary" },
-  { label: "Education",   key: "education" },
-  { label: "Experience",  key: "experience" },
-  { label: "Projects",    key: "projects" },
-  { label: "Skills",      key: "skills" },
-];
-
 export default function App() {
   const [cvData, setCvData] = useState(EMPTY_CV);
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [lang, setLang] = useState("en");
+
+  const tr = t[lang];
 
   function setSection(key, value) {
     setCvData((prev) => ({ ...prev, [key]: value }));
   }
 
-  function next() {
-    if (step < STEPS.length - 1) setStep((s) => s + 1);
-  }
-  function back() {
-    if (step > 0) setStep((s) => s - 1);
-  }
+  function next() { if (step < 5) setStep((s) => s + 1); }
+  function back() { if (step > 0) setStep((s) => s - 1); }
 
   async function handleGenerate() {
     setLoading(true);
@@ -56,41 +47,25 @@ export default function App() {
   }
 
   const stepComponents = [
-    <HeaderStep
-      data={cvData.header}
-      onChange={(v) => setSection("header", v)}
-    />,
-    <SummaryStep
-      data={cvData.summary}
-      onChange={(v) => setSection("summary", v)}
-    />,
-    <EducationStep
-      data={cvData.education}
-      onChange={(v) => setSection("education", v)}
-    />,
-    <ExperienceStep
-      data={cvData.experience}
-      onChange={(v) => setSection("experience", v)}
-    />,
-    <ProjectsStep
-      data={cvData.projects}
-      onChange={(v) => setSection("projects", v)}
-    />,
-    <SkillsStep
-      data={cvData.skills}
-      onChange={(v) => setSection("skills", v)}
-    />,
+    <HeaderStep data={cvData.header} onChange={(v) => setSection("header", v)} tr={tr} />,
+    <SummaryStep data={cvData.summary} onChange={(v) => setSection("summary", v)} tr={tr} />,
+    <EducationStep data={cvData.education} onChange={(v) => setSection("education", v)} tr={tr} />,
+    <ExperienceStep data={cvData.experience} onChange={(v) => setSection("experience", v)} tr={tr} />,
+    <ProjectsStep data={cvData.projects} onChange={(v) => setSection("projects", v)} tr={tr} />,
+    <SkillsStep data={cvData.skills} onChange={(v) => setSection("skills", v)} tr={tr} />,
   ];
 
   return (
     <WizardShell
-      steps={STEPS}
+      tr={tr}
       currentStep={step}
       onNext={next}
       onBack={back}
       onGenerate={handleGenerate}
       loading={loading}
       error={error}
+      lang={lang}
+      onLangToggle={() => setLang((l) => (l === "en" ? "zh" : "en"))}
     >
       {stepComponents[step]}
     </WizardShell>

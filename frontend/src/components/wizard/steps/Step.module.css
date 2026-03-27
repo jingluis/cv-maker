@@ -10,6 +10,14 @@
   gap: 1rem;
 }
 
+.sectionLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
 @media (max-width: 540px) {
   .grid2 { grid-template-columns: 1fr; }
 }
