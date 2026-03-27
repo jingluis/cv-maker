@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 
 const START_TIME = Date.now();
+const YEAR = new Date().getFullYear();
 
 function formatUptime(ms) {
   const s = Math.floor(ms / 1000);
@@ -22,11 +23,9 @@ export default function Footer() {
     return () => clearInterval(id);
   }, []);
 
-  const year = new Date().getFullYear();
-
   return (
     <footer className={styles.footer}>
-      <span>© {year} Jing Luis Cao</span>
+      <span>© {YEAR} Jing Luis Cao</span>
       <span className={styles.dot}>·</span>
       <span>Session: {uptime}</span>
       <span className={styles.dot}>·</span>

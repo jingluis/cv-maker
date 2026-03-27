@@ -27,7 +27,7 @@ export const t = {
     experience: {
       title: "Professional Experience",
       add: "Add position",
-      title_: "Job Title", titlePh: "Software Engineer",
+      jobTitle: "Job Title", titlePh: "Software Engineer",
       company: "Company", companyPh: "Google",
       location: "Location", locationPh: "San Francisco, USA",
       dates: "Dates", datesPh: "Jan. 2022 -- Present",
@@ -81,7 +81,7 @@ export const t = {
     experience: {
       title: "工作经验",
       add: "添加工作经历",
-      title_: "职位", titlePh: "软件工程师",
+      jobTitle: "职位", titlePh: "软件工程师",
       company: "公司", companyPh: "阿里巴巴",
       location: "地点", locationPh: "杭州, 中国",
       dates: "时间", datesPh: "2022.01 -- 至今",

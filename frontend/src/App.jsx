@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import WizardShell from "./components/wizard/WizardShell.jsx";
 import HeaderStep from "./components/wizard/steps/HeaderStep.jsx";
 import SummaryStep from "./components/wizard/steps/SummaryStep.jsx";
@@ -26,12 +26,13 @@ export default function App() {
   const [lang, setLang] = useState("en");
 
   const tr = t[lang];
+  const maxStep = tr.steps.length - 1;
 
-  function setSection(key, value) {
+  const setSection = useCallback((key, value) => {
     setCvData((prev) => ({ ...prev, [key]: value }));
-  }
+  }, []);
 
-  function next() { if (step < 5) setStep((s) => s + 1); }
+  function next() { if (step < maxStep) setStep((s) => s + 1); }
   function back() { if (step > 0) setStep((s) => s - 1); }
 
   async function handleGenerate() {
@@ -46,14 +47,14 @@ export default function App() {
     }
   }
 
-  const stepComponents = [
+  const stepComponents = useMemo(() => [
     <HeaderStep data={cvData.header} onChange={(v) => setSection("header", v)} tr={tr} />,
     <SummaryStep data={cvData.summary} onChange={(v) => setSection("summary", v)} tr={tr} />,
     <EducationStep data={cvData.education} onChange={(v) => setSection("education", v)} tr={tr} />,
     <ExperienceStep data={cvData.experience} onChange={(v) => setSection("experience", v)} tr={tr} />,
     <ProjectsStep data={cvData.projects} onChange={(v) => setSection("projects", v)} tr={tr} />,
     <SkillsStep data={cvData.skills} onChange={(v) => setSection("skills", v)} tr={tr} />,
-  ];
+  ], [cvData, tr, setSection]);
 
   return (
     <WizardShell
@@ -64,7 +65,6 @@ export default function App() {
       onGenerate={handleGenerate}
       loading={loading}
       error={error}
-      lang={lang}
       onLangToggle={() => setLang((l) => (l === "en" ? "zh" : "en"))}
     >
       {stepComponents[step]}
