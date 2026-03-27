@@ -1,0 +1,53 @@
+.wrapper { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.bullet {
+  padding-top: 0.5rem;
+  color: #5c35d4;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  resize: vertical;
+  line-height: 1.4;
+  transition: border-color 0.15s;
+}
+
+.input:focus { outline: none; border-color: #5c35d4; }
+
+.removeBtn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #bbb;
+  cursor: pointer;
+  padding: 0.3rem 0.4rem;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+.removeBtn:hover { color: #e53935; background: #fff0f0; }
+
+.addBtn {
+  align-self: flex-start;
+  background: none;
+  border: 1px dashed #5c35d4;
+  color: #5c35d4;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.addBtn:hover { background: #f0ebff; }

@@ -1,0 +1,46 @@
+.wrapper { display: flex; flex-direction: column; gap: 1rem; }
+
+.card {
+  border: 1px solid #e8eaf6;
+  border-radius: 10px;
+  padding: 1.25rem;
+  background: #fafbff;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cardIndex {
+  font-weight: 700;
+  color: #5c35d4;
+  font-size: 0.85rem;
+}
+
+.removeBtn {
+  background: none;
+  border: 1px solid #ffcdd2;
+  color: #e53935;
+  padding: 0.25rem 0.7rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.removeBtn:hover { background: #fff0f0; }
+
+.addBtn {
+  align-self: flex-start;
+  background: none;
+  border: 1px dashed #5c35d4;
+  color: #5c35d4;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.addBtn:hover { background: #f0ebff; }

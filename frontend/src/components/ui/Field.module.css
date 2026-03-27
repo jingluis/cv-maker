@@ -1,0 +1,24 @@
+.field { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: #999;
+  margin-top: -0.2rem;
+}
+
+.input {
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  padding: 0.55rem 0.8rem;
+  width: 100%;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+
+.input:focus { outline: none; border-color: #5c35d4; }
