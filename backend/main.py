@@ -18,6 +18,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://localhost:4173",
         "https://jingl-ll.github.io",
+        "https://cv-maker-jing.duckdns.org",
     ],
     allow_methods=["POST"],
     allow_headers=["Content-Type"],
@@ -84,7 +85,7 @@ class CVData(BaseModel):
     education: list[EducationEntry] = []
     experience: list[ExperienceEntry] = []
     projects: list[ProjectEntry] = []
-    skills: dict[str, str] = {}
+    skills: list[dict] = []
 
 
 # ---------- LaTeX escaping ----------

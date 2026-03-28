@@ -15,7 +15,7 @@ const EMPTY_CV = {
   education: [],
   experience: [],
   projects: [],
-  skills: { "IT Skills": "", "Certifications": "", "Language Skills": "", "Activities": "" },
+  skills: [],
 };
 
 export default function App() {

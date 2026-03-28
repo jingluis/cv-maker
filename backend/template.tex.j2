@@ -150,8 +150,10 @@
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-    << for category, value in cv.skills.items() >>
-     \textbf{<{ tex(category) }>}{: <{ tex(value) }>} \\
+    << for block in cv.skills >>
+    << if block.title or block.content >>
+     \textbf{<{ tex(block.title) }>}{: <{ tex(block.content) }>} \\
+    << endif >>
     << endfor >>
     }}
  \end{itemize}
